@@ -10,6 +10,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+
+
+    <style>
+        .console {
+            font-family: Courier;
+            color: #cccccc;
+            background: #000000;
+            border: 3px double #cccccc;
+            padding: 10px;
+            height: 80vh;
+            font-size: 14px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,24 +37,24 @@
         <div class="row">
 
 
-            <div class="card" > 
-                <div class="card-body"> 
+            <div class="card">
+                <div class="card-body">
                     <form action="{{route('todos.store')}}" method="post">
                         @csrf
 
 
                         <div class="row g-3">
                             <div class="col-5">
-                                <input type="text" class="form-control" name="title"  aria-label="First name">
+                                <input type="text" class="form-control" name="title" aria-label="First name">
                             </div>
                             <div class="col-6">
-                                <input type="text" name="des" class="form-control"  aria-label="Last name">
+                                <input type="text" name="des" class="form-control" aria-label="Last name">
                             </div>
                             <div class="col-1">
-                            <button type="submit" class="btn btn-outline-success  ">submit</button>
+                                <button type="submit" class="btn btn-outline-success  ">+</button>
                             </div>
                         </div>
-                       
+
 
 
                     </form>
@@ -53,29 +70,39 @@
     </div>
 
 
-    <div class="container">
+    <div class="container console">
         <div class="row">
-            <div class="col-12">
 
 
-            <table class="table table-sm">
-  <thead>
- 
-  </thead>
-  <tbody>
-    @php($i=1)
-    @foreach($todos as $todo)
-    <tr>
-      <th scope="row">{{$i++}}</th>
-      <td>{{$todo->title}}</td>
-      <td>{{$todo->des}}</td>
-    </tr>
-  @endforeach
-  </tbody>
-</table>
 
+
+            @php($i=1)
+            @foreach($todos as $todo)
+            <div class="col-1">
+                #{{$i++}}
+            </div>
+            <div class="col-6">
+
+                {{$todo->title}}
 
             </div>
+            <div class="col-4">
+                {{$todo->des}}
+
+            </div>
+            <div class="col-1">
+                <form action="{{route('todos.destroy',$todo->id)}}" method="post">
+                    @csrf
+                    @method('delete')
+                    <input type="submit" class=" link" value="-">
+                </form>
+
+            </div>
+            @endforeach
+
+
+
+
         </div>
     </div>
 

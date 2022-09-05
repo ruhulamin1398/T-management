@@ -20,6 +20,7 @@ return new class extends Migration
             $table->boolean('status')->default(false);
             $table->time('schedule')->default(now());
             $table->integer('point')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

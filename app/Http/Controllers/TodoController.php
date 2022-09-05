@@ -40,6 +40,7 @@ class TodoController extends Controller
     {
         $todo = new todo;
         $todo->title= $request->title;
+        if(!is_null($request->des ))
         $todo->des= $request->des;
         $todo->save();
         return back();
@@ -88,6 +89,7 @@ class TodoController extends Controller
      */
     public function destroy(todo $todo)
     {
-        //
+       $todo->delete();
+       return back();
     }
 }
