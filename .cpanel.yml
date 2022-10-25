@@ -1,0 +1,8 @@
+
+
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/ruhulamin/3XMA
+    - /bin/cp -r * $DEPLOYPATH #copy all from root
+  
