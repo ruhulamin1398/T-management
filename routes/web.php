@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\WalkController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::resource('todos',TodoController::class);
+Route::resource('walks',WalkController::class);
 
 Route::get('/', function () {
     return view('welcome');
