@@ -16,7 +16,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos= todo::all();
+        $todos= todo::orderByDesc('id')->get()->limit(20); 
         return view('todo.index',compact('todos'));
     }
 
