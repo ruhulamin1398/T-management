@@ -42,7 +42,7 @@
                     <form action="{{route('todos.store')}}" method="post">
                         @csrf
 
-                        <input type="text"  name="type"  value="{{$type}}">
+                        <input type="text"  name="type"  value="{{$type}}" hidden>
 
                         <div class="row g-3">
                             <div class="col-5">
