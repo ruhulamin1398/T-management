@@ -3,6 +3,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/ruhulamin/3XMA
+    - export DEPLOYPATH=/home/ruhulamin/3XMA.ruhul-amin.com
     - /bin/cp -r * $DEPLOYPATH #copy all from root
   
