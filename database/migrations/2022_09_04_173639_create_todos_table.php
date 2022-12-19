@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title',191);
             $table->text('des')->default('');
+            $table->text('type')->default('task');
             $table->boolean('status')->default(false);
             $table->time('schedule')->default(now());
             $table->integer('point')->default(0);

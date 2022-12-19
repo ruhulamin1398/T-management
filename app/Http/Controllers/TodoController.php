@@ -14,10 +14,12 @@ class TodoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request)
     {
-        $todos= todo::orderByDesc('id')->get()->take(20); 
-        return view('todo.index',compact('todos'));
+        $todos= todo::where('type',$request->type)->get()->sortByDesc('created_at')->take(20);
+        $type= $request->type; 
+       
+        return view('todo.index',compact('todos','type' ));
     }
 
     /**
@@ -40,6 +42,7 @@ class TodoController extends Controller
     {
         $todo = new todo;
         $todo->title= $request->title;
+        $todo->type= $request->type;
         if(!is_null($request->des ))
         $todo->des= $request->des;
         $todo->save();
