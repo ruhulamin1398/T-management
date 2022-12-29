@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\WalkController;
+use App\Models\todo;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +21,15 @@ Route::resource('todos',TodoController::class);
 Route::resource('walks',WalkController::class);
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+});
+Route::get('todos-types', function () {
+    
+   $types=   DB::table('todos')
+            ->select('type')
+            ->distinct()
+            ->get();
+            return $types;
 });
 
 Route::get('/dashboard', function () {
